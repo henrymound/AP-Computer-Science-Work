@@ -1,0 +1,19 @@
+public class MagicSquare{
+
+  private int[][] square;
+  private int size, row, colomn, lastRow, lastColomn, matrixSize;
+  
+  public MagicSquare(int s){
+  
+    size = s;
+    square = new int[size][size];
+    row = 0;
+    colomn = size/2;
+    lastRow = row;
+    lastColomn = colomn;
+    matrixSize = size^2;
+    
+  
+  }
+
+}

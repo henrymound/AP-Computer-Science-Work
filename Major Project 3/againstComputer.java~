@@ -1,0 +1,198 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class againstComputer{
+
+  private char boardArray[][] = { {' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '} };
+  private char playerLetter;
+  private char computerLetter;
+  private Scanner scan = new Scanner(System.in);
+  private Random rand = new Random();
+  private boolean gameOver = false;
+    
+  public againstComputer(){
+  
+  }
+  
+  public void run(){
+  
+    System.out.println("Would you like to be [1] X's or [2] O's?");
+    int r1 = scan.nextInt();
+    //Determins the players letter
+    if(r1 == 1){
+      playerLetter = 'X';
+      computerLetter = 'O';
+    }else{
+      playerLetter = 'O';
+      computerLetter = 'X';
+    }
+    
+    System.out.println("Lets play! To insert a letter, type in its corresponding number value on the board.");
+    
+    boolean playerMoved = false;
+    int whoGoesFirst = rand.nextInt(2);
+    if(whoGoesFirst == 0){
+      System.out.println("I have randomly decided that you go first.");
+      playerMoved = false;
+      printBoard();
+    }else{
+      System.out.println("I have randomly decided that the computer goes first.");
+      playerMoved = true;
+    }
+
+    for(int c = 0; c < 9; c++){
+      if(playerMoved){
+        if(!gameOver)computerMove();
+        playerMoved = false;
+      }
+      else{
+        if(!gameOver)playerMove();
+        playerMoved = true;
+      }
+    }
+    if(!gameOver)System.out.println("You have tied the computer.");
+    
+    
+
+  }
+  
+  
+  public void playerMove(){
+     
+     System.out.println("\n\nChoose a square");
+     int move = scan.nextInt();
+     int[] array = getCoordinates(move);
+     
+     int x = array[0];
+     int y = array[1];
+    
+    if(boardArray[x][y] == ' '){
+       boardArray[x][y] = playerLetter;}
+    else{
+      while(boardArray[x][y] != ' '){
+         System.out.println("\n\nSpace already taken, try again.");
+         move = scan.nextInt();
+         array = getCoordinates(move);
+     
+         x = array[0];
+         y = array[1];
+      }
+      boardArray[x][y] = playerLetter;
+    }
+    
+    printBoard();
+    if(checkForWin()){
+       System.out.println("You won! You are better than a machine.");
+       gameOver = true;
+    }
+    
+  }
+  
+  public void computerMove(){
+    System.out.println("\n\nComputer's turn");
+    int[] check;
+    ArrayList<Integer> emptySlots = new ArrayList<Integer>();
+
+    for(int x = 0; x < 9; x++){
+       check = getCoordinates(x);
+       if (boardArray[check[0]][check[1]] == ' ')
+          emptySlots.add(x);
+    }
+    
+    int pickMove = rand.nextInt(emptySlots.size());
+    int move = emptySlots.get(pickMove);
+    int[] coord = new int[2];
+    coord = getCoordinates(move);
+    
+    boardArray[coord[0]][coord[1]] = computerLetter;
+    printBoard();
+    if(checkForWin()){
+       System.out.println("The computer won. Better luck next time...");
+       gameOver = true;
+    }
+  
+  }
+  
+  public void printBoard(){
+  
+    System.out.println(" "+boardArray[0][0]+" | "+boardArray[0][1]+" | "+boardArray[0][2]+" ");
+    System.out.println("-----------");
+    System.out.println(" "+boardArray[1][0]+" | "+boardArray[1][1]+" | "+boardArray[1][2]+" ");
+    System.out.println("-----------");
+    System.out.println(" "+boardArray[2][0]+" | "+boardArray[2][1]+" | "+boardArray[2][2]+" ");
+    
+  }
+  
+  public int[] getCoordinates(int x){
+    int[] y = new int[2];
+    
+    switch (x){
+    case 1:
+      y[0] = 0;
+      y[1] = 0;
+      break;
+    case 2:
+      y[0] = 0;
+      y[1] = 1;
+      break;
+    case 3:
+      y[0] = 0;
+      y[1] = 2;
+      break;
+    case 4:
+      y[0] = 1;
+      y[1] = 0;
+      break;
+    case 5:
+      y[0] = 1;
+      y[1] = 1;
+      break;
+    case 6:
+      y[0] = 1;
+      y[1] = 2;
+      break;
+    case 7:
+      y[0] = 2;
+      y[1] = 0;
+      break;
+    case 8:
+      y[0] = 2;
+      y[1] = 1;
+      break;
+    case 9:
+      y[0] = 2;
+      y[1] = 2;
+      break;
+      
+       }
+    
+    return y;
+  
+  }
+  
+  public boolean checkForWin(){
+    char letterToCheck = 'X';
+    boolean win = false;
+    for(int x = 0; x < 2; x++){
+      if(//horizontal wins
+         ((boardArray[0][0] == boardArray[0][1]) && (boardArray[0][1] == boardArray[0][2]) && (boardArray[0][0] == letterToCheck) )||
+         ((boardArray[1][0] == boardArray[1][1]) && (boardArray[1][1] == boardArray[1][2]) && (boardArray[1][0] == letterToCheck) )||
+         ((boardArray[2][0] == boardArray[2][1]) && (boardArray[2][1] == boardArray[2][2]) && (boardArray[2][0] == letterToCheck) )||
+         //verticle wins
+         ((boardArray[0][0] == boardArray[1][0]) && (boardArray[1][0] == boardArray[2][0]) && (boardArray[0][0] == letterToCheck) )||
+         ((boardArray[0][1] == boardArray[1][1]) && (boardArray[1][1] == boardArray[2][1]) && (boardArray[0][1] == letterToCheck) )||
+         ((boardArray[0][2] == boardArray[1][2]) && (boardArray[1][2] == boardArray[2][2]) && (boardArray[0][2] == letterToCheck) )||
+         //diagonal wins
+         ((boardArray[0][0] == boardArray[1][1]) && (boardArray[1][1] == boardArray[2][2]) && (boardArray[0][0] == letterToCheck) )||
+         ((boardArray[0][2] == boardArray[1][1]) && (boardArray[1][1] == boardArray[2][0]) && (boardArray[0][2] == letterToCheck) )
+        )//checks all winning possibilities
+          win = true;
+       letterToCheck = 'O';
+    }
+    return win;
+  
+  }
+
+
+}

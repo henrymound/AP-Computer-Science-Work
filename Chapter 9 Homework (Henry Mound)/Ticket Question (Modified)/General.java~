@@ -1,0 +1,17 @@
+public class General extends Ticket{
+
+  protected int days;
+  protected double normalPrice = 30.00;
+  protected double slowPrice = 40.00;
+  
+  public General (int daysInAdvance){
+    days = daysInAdvance;
+  }
+  
+  public double getPrice(){
+    if(days >= 10)
+      return normalPrice;
+    else return slowPrice;
+  }
+  
+}

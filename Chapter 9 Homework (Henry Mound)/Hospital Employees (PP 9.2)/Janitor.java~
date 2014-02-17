@@ -1,0 +1,7 @@
+public class Janitor extends employee{
+
+  public String getJobs{
+     return "I am a Janitor and my name is "+getName()+", and I do a lot of things. My favorite is mopping the floor."
+  }
+
+}

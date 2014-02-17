@@ -1,0 +1,7 @@
+public class Doctor extends employee{
+
+  public getPatients(){
+     return new String "I have lot's of patients, because I'm a doctor!";
+  }
+
+}

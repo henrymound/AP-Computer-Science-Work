@@ -1,0 +1,11 @@
+public class ticketTester{
+
+  public static void main(String[] args){
+  
+    Advance ticket1 = new Advance(10)l
+    StudentAdvance ticket2 = new StudentAdvance(3);
+    System.out.println(ticket1);
+    System.out.println(ticket2);
+  }
+
+}

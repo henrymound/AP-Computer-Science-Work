@@ -1,0 +1,13 @@
+public class employee{
+
+  protected String name;
+  
+  public void setName(String s){
+    name = s;
+  }
+  
+  public void getName(){
+    return name;
+  }
+
+}

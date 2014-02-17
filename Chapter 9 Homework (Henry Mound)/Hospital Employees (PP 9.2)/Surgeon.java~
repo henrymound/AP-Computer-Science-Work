@@ -1,0 +1,7 @@
+public Class Surgeon extends employee{
+
+  public String getTools{
+    return "I have lot's of tools, because I'm a surgeon. My favorite is a scalpel"; 
+  }
+
+}

@@ -1,0 +1,13 @@
+public class Faculty extends Ticket{
+  
+  public double Faculty(){
+    if(days >= 10)
+      return normalPrice/2;
+    else return slowPrice/2;
+  }
+  
+  public String toString(){
+      return super.toString()+"\n(student ID required)"; 
+  }
+
+}

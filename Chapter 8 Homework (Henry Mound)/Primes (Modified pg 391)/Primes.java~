@@ -1,0 +1,14 @@
+public class Primes{
+   
+    static int[] primeNums = {2, 3, 5, 7, 11, 13, 17, 19};
+    
+    public static String toString(){
+    
+      String toReturn = "";
+      for (int prime : primeNums)
+         toReturn += (prime + " "); 
+      
+    }
+    
+
+}
