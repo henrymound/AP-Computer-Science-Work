@@ -1,0 +1,11 @@
+public class climbRunner{
+
+  public static void main(String[] args){
+  
+    ClimbingClub hikerClub = new ClimbingClub();
+    hikerClub.add("Everist", 213);
+    hikerClub.add("Old Rag", 245);
+    hikerClub.add("Everist", 213);
+  
+  }
+}

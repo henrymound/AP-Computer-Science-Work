@@ -1,0 +1,18 @@
+import java.util.Random;
+
+public class sortTester{
+  
+  public static void main(String[] args){
+    
+    binary b = new binary();
+    linear l = new linear();
+    
+    Comparable[] toSearch = {'A', 'C', 'D', 'E', 'J', 'L', 'N', 'W', 'X', 'T', 'O', 'P', 'R'};
+    Random rand = new Random();
+    Comparable toFind = 'C';
+    
+    System.out.println("Linear Search found C at Location: "+l.linearSearch(toSearch, toFind));
+    System.out.println("Binary Search found C at Location: "+b.binarySearch(toSearch, toFind));
+    
+  }
+}

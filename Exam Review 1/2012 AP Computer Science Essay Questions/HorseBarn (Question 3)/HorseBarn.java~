@@ -1,0 +1,30 @@
+public class HorseBarn{
+
+  private Horse[] spaces;
+  
+  public int findHorseSpace(String name){
+    int location = -1;
+    for(int x = 0; x < spaces.length; x++){
+      if(spaces[x] != null && (spaces[x].getName().equals(name)) ){
+        location = x;
+        break;
+      }
+    }
+    return location;
+  }
+  
+  public void consolidate(){
+    Horse[] spaces2 = new Horse[spaces.length];
+    int counter = 0;
+    
+    for(int x = 0; x < spaces.length; x++){
+      if(spaces[x] != null){
+        spaces2[counter] = spaces[x];
+        counter++;
+      }
+    }
+    spaces = spaces2;
+  }
+
+}
+

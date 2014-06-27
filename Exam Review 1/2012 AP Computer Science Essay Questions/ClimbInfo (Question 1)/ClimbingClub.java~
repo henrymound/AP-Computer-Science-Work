@@ -1,0 +1,17 @@
+public class ClimbingClub    {
+    
+  private List<ClimbInfo> climbList;
+
+  public ClimbingClub() {
+    climbList = new ArrayList<ClimbInfo>(); 
+  }
+
+  public void addClimb(String peakName, int climbTime) {
+
+  }
+
+  public int distinctPeakNames() {
+
+  }
+
+}

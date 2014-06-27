@@ -1,0 +1,14 @@
+public class ClimbInfo  {
+     
+  public ClimbInfo(String peakName, int climbTime) {
+
+  }
+  public String getName() {
+
+  }
+
+  public int getTime() {
+
+  }
+
+}

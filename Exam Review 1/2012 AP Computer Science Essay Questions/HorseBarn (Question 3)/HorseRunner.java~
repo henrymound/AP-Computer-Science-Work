@@ -1,0 +1,8 @@
+public class HorseRunner{
+
+  public static void main(String[] args){
+    HorseBarn barn = new HorseBarn();
+    barn.findHorseSpace("Jerry");
+  }
+
+}
